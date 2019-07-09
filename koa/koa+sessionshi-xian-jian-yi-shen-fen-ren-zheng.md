@@ -26,3 +26,70 @@ npm i --save koa-session redis koa-redis
 
 具体配置可以参考 官方文档
 
+```
+app.keys = ['some secret key']
+
+const CONFIG = {
+  key: 'koa:sess',
+  maxAge: 10 * 1000,
+  autoCommit: true,
+  overwrite: true,
+  httpOnly: true,
+  signed: true,
+  rolling: false,
+  renew: false,
+}
+
+app.use(session(CONFIG, app))
+```
+
+## 实现登陆/登出借口
+
+* 登陆：如果用户存在，则通过 创建session， 保存到本地，并通过Set-Cookie将session id保存到用户侧
+* 登出：销毁session， 并清楚cookie
+
+```
+// 登陆
+router.post('/login', async function (ctx, next) {
+  let sess = ctx.session;
+  const {username, password} = ctx.request.body
+  let user = findUser(username, password);
+
+  if(user){
+    ctx.session.userinfo = {
+      username: username,
+    };
+    ctx.body = {ret_code: 0, ret_msg: '登录成功'};
+
+  }else{
+    ctx.body = {ret_code: 1, ret_msg: '账号或密码错误'};
+  }
+})
+
+
+// 登出
+router.get('/logout', async function (ctx, next) {
+  // To destroy a session simply set it to null:
+  ctx.session = null;
+  ctx.body = {ret_code: 0, ret_msg: '退出登陆成功'}
+})
+```
+
+## 登陆态判断
+
+用户访问http://127.0.0.1:3000时，判断用户是否登陆
+
+```
+router.get('/', async (ctx, next) => {
+  let loginUser = ctx.session.userinfo
+  let isLogined = !!loginUser
+
+  ctx.body = {
+    isLogined: isLogined,
+    userinfo: loginUser || ''
+  }
+})
+```
+
+
+
