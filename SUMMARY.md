@@ -5,9 +5,10 @@
 * [es6](es6.md)
   * [let const](es6/let-const.md)
   * 解构赋值
-  * promise
+  * [promise](es6/promise.md)
   * [async/await](es6/asyncawait.md)
 * express
 * [koa](koa.md)
   * [koa+session实现简易身份认证](koa/koa+sessionshi-xian-jian-yi-shen-fen-ren-zheng.md)
+  * [koa2中间件的开发和使用](koa/koa2zhong-jian-jian-de-kai-fa-he-shi-yong.md)
 
