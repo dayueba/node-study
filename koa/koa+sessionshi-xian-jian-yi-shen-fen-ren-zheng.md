@@ -4,7 +4,23 @@
 
 ## 环境初始化
 
+ 首先， 初始化项目
 
+```
+koa2 auth-koa2
+```
+
+ 然后，安装依赖
+
+```
+npm i
+```
+
+ 接着，安装session相关的包
+
+```
+npm i --save koa-session redis koa-redis
+```
 
 
 
