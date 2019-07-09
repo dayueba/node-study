@@ -24,7 +24,5 @@ npm i --save koa-session redis koa-redis
 
 ## session相关的配置
 
-具体配置可以参考  具体 
-
-
+具体配置可以参考 官方文档
 
