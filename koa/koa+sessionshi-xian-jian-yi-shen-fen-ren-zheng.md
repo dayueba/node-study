@@ -77,7 +77,7 @@ router.get('/logout', async function (ctx, next) {
 
 ## 登陆态判断
 
-用户访问http://127.0.0.1:3000时，判断用户是否登陆
+用户访问[http://127.0.0.1:3000时，判断用户是否登陆](http://127.0.0.1:3000时，判断用户是否登陆)
 
 ```
 router.get('/', async (ctx, next) => {
@@ -90,6 +90,10 @@ router.get('/', async (ctx, next) => {
   }
 })
 ```
+
+##  使用redis存储session
+
+
 
 
 
