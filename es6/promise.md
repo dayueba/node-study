@@ -22,8 +22,6 @@ const readFilePromise = function (fileName) {
 * 执行`resolve`传递的值，会被第一个`then`处理时接收到
 * 如果`then`有链式操作，前面步骤返回的值，会被后面的步骤获取到
 
-
-
 在若干个`then`串联之后，我们一般会在最后跟一个`.catch`来捕获异常，而且执行`reject`时传递的参数也会在`catch`中获取到。这样做的好处是：
 
 * 让程序看起来更加简洁，是一个串联的关系，没有分支（如果用`then`的两个参数，就会出现分支，影响阅读）
@@ -34,6 +32,22 @@ const readFilePromise = function (fileName) {
 .all\(\)等每个promise都执行完 再执行接下来的操作
 
 .race\(\)只要有一个promise执行结束就执行接下来的操作
+
+
+
+### Promise/A+
+
+异步模式编程规范
+
+关于状态
+
+* promise 可能有三种状态：等待（pending）、已完成（fulfilled）、已拒绝（rejected）
+* promise 的状态只可能从“等待”转到“完成”态或者“拒绝”态，不能逆向转换，同时“完成”态和“拒绝”态不能相互转换
+
+**关于`then`方法**
+
+* promise 必须实现`then`方法，而且`then`必须返回一个 promise ，同一个 promise 的`then`可以调用多次（链式），并且回调的执行顺序跟它们被定义时的顺序一致
+* `then`方法接受两个参数，第一个参数是成功时的回调，在 promise 由“等待”态转换到“完成”态时调用，另一个是失败时的回调，在 promise 由“等待”态转换到“拒绝”态时调用
 
 
 
