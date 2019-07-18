@@ -16,7 +16,7 @@
 * [Node](node.md)
   * [环境&调试](node/huan-588326-diao-shi.md)
   * [基础api](node/ji-chu-api.md)
-  * gulp & webpack
+  * [gulp & webpack](node/gulp-and-webpack.md)
   * [babel](node/babel.md)
   * [爬虫](node/pa-chong.md)
 * web安全
